@@ -1,0 +1,20 @@
+Pencils 25 2.50 stationery
+Pens 32 4.00 stationery 
+Paper 450 2.00 stationery
+Coke 600ml 30 22.00 Coca-Cola
+Coke 2.5L 16 42.00 Coca-Cola
+Ruffles 14 20.00 Chips
+Doritos 20 20.00 Chips
+Cheetos 23 16.00 Chips
+Takis 12 21.00 Chips
+Ciel 500ml 20 14.00 Water
+Ciel 1L 24 20.00 Water
+Ciel 1.5L 10 16.00 Water
+Fanta 600ml 8 22.00 Coca-Cola
+Fresca 600ml 12 22.00 Coca-Cola
+Sprite 600ml 15 22.00 Coca-Cola
+Gansito 22 21.00 Pastries 
+Milk 1.8L 6 38.00 General
+Milk 3.9L 3 54.00 General
+Sugar 1Kg 8 23.00 General
+Salt 1Kg 6 18.00 General
