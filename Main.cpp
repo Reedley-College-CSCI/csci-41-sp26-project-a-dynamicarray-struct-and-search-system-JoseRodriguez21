@@ -9,8 +9,19 @@ struct Products {
     string category;
 };
 
+class Inventory {
+    private:
+        Products Product[30];
+        int count;
+    public:
+    Inventory() {
+        count = 0;
+    }
+};
+
 int main() {
     string userName;
+
 
     cout << "Enter your name: " << endl;
     getline(cin, userName);
