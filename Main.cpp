@@ -4,9 +4,16 @@ using namespace std;
 
 struct Products {
     string productName;
-    int itemsStock;
+    int itemStock;
     double price;
     string category;
+
+    Products() {
+        productName = "";
+        itemStock = 0;
+        price = 0.0;
+        category = "";
+    }
 };
 
 class Inventory {
