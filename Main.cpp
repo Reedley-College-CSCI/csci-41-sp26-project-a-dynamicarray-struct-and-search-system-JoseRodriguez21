@@ -2,6 +2,13 @@
 #include <string>
 using namespace std;
 
+struct Products {
+    string productName;
+    int itemsStock;
+    double price;
+    string category;
+};
+
 int main() {
     string userName;
 
