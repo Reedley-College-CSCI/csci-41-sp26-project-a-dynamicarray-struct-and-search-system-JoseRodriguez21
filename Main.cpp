@@ -47,5 +47,11 @@ int main() {
 void Inventory::loadData(const string& filename) {
     ifstream storageFile(filename);
 
+    if (!storageFile) {
+        cout << "Error opening Storage.txt." << endl;
+        return;
+    }
+
+
     storageFile.close();
 }
