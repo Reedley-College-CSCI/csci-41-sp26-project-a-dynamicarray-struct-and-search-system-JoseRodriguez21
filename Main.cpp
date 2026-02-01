@@ -58,6 +58,9 @@ void Inventory::loadData(const string& filename) {
 
     while(getline(storageFile, line) && count < 30) {
         stringstream ss(line);
+        string words[20];
+        int wordCount = 0;
+        string word;
     }
 
     storageFile.close();
