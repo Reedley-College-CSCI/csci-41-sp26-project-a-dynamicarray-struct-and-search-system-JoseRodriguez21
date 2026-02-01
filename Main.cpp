@@ -68,6 +68,8 @@ void Inventory::loadData(const string& filename) {
         }
         
         if (wordCount < 4) continue;
+
+        int stock = stoi(words[wordCount - 3]);
     }
 
     storageFile.close();
