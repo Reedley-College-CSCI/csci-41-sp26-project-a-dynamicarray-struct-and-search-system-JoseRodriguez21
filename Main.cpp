@@ -57,7 +57,7 @@ void Inventory::loadData(const string& filename) {
     string line;
 
     while(getline(storageFile, line) && count < 30) {
-        
+        stringstream ss(line);
     }
 
     storageFile.close();
