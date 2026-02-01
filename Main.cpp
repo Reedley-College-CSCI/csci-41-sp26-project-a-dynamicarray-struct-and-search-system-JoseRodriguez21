@@ -72,6 +72,11 @@ void Inventory::loadData(const string& filename) {
         int stock = stoi(words[wordCount - 3]);
         double price = stod(words[wordCount - 2]);
         string category = words[wordCount - 1];
+
+        string name = words[0];
+        for (int i = 1; i < wordCount - 3; i++) {
+            name += " " + words[i]; 
+        }
     }
 
     storageFile.close();
