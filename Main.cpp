@@ -53,6 +53,12 @@ void Inventory::loadData(const string& filename) {
         return;
     }
 
+    count = 0;
+    string line;
+
+    while(getline(storageFile, line) && count < 30) {
+        
+    }
 
     storageFile.close();
 }
