@@ -20,7 +20,7 @@ struct Products {
 
 class Inventory {
     private:
-        Products Product[30];
+        Products product[30];
         int count;
     public:
     Inventory() {
@@ -77,6 +77,13 @@ void Inventory::loadData(const string& filename) {
         for (int i = 1; i < wordCount - 3; i++) {
             name += " " + words[i]; 
         }
+
+        product[count].productName = name;
+        product[count].itemStock = stock;
+        product[count].price = price;
+        product[count].category = category;
+
+        count++;
     }
 
     storageFile.close();
