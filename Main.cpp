@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 struct Products {
@@ -24,15 +25,27 @@ class Inventory {
     Inventory() {
         count = 0;
     }
+
+    void loadData(const string& filename);
+
+    
 };
 
 int main() {
     string userName;
+    int productCount = 0;
+    Inventory store;
 
-
+    store.loadData("Storage.txt");
     cout << "Enter your name: " << endl;
     getline(cin, userName);
 
     cout << "Welcome " << userName << " to your storage system." << endl;
 
+}
+
+void Inventory::loadData(const string& filename) {
+    ifstream storageFile(filename);
+
+    storageFile.close();
 }
