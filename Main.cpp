@@ -66,6 +66,8 @@ void Inventory::loadData(const string& filename) {
             words[wordCount] = word;
             wordCount++;
         }
+        
+        if (wordCount < 4) continue;
     }
 
     storageFile.close();
