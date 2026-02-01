@@ -61,6 +61,11 @@ void Inventory::loadData(const string& filename) {
         string words[20];
         int wordCount = 0;
         string word;
+
+        while (ss >> word && wordCount < 20) {
+            words[wordCount] = word;
+            wordCount++;
+        }
     }
 
     storageFile.close();
