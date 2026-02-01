@@ -87,4 +87,6 @@ void Inventory::loadData(const string& filename) {
     }
 
     storageFile.close();
+
+    cout << "Loaded " << count << " products." << endl;
 }
