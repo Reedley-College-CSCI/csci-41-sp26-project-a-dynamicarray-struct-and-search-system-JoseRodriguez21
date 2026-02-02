@@ -28,6 +28,7 @@ class Inventory {
     }
 
     void loadData(const string& filename);
+    void sortByName();
 
     
 };
@@ -38,6 +39,8 @@ int main() {
     Inventory store;
 
     store.loadData("Storage.txt");
+    store.sortByName();
+
     cout << "Enter your name: " << endl;
     getline(cin, userName);
 
