@@ -22,6 +22,9 @@ class Inventory {
     private:
         Products product[30];
         int count;
+
+        bool compareCase(const string& product1, const string& product2) const;
+
     public:
     Inventory() {
         count = 0;
@@ -92,4 +95,8 @@ void Inventory::loadData(const string& filename) {
     storageFile.close();
 
     cout << "Loaded " << count << " products." << endl;
+}
+
+bool Inventory::compareCase(const string& product1, const string& b) const {
+    
 }
