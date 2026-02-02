@@ -23,6 +23,7 @@ class Inventory {
         Products product[30];
         int count;
 
+        void quickSort(int low, int high);
         bool compareCase(const string& product1, const string& product2) const;
 
     public:
@@ -95,6 +96,10 @@ void Inventory::loadData(const string& filename) {
     storageFile.close();
 
     cout << "Loaded " << count << " products." << endl;
+}
+
+void Inventory::sortByName() {
+    quickSort(0, count - 1);
 }
 
 bool Inventory::compareCase(const string& product1, const string& product2) const {
