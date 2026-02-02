@@ -123,7 +123,8 @@ void Inventory::sortByName() {
 void Inventory::quickSort(int low, int high) {
     if (low < high) {
         int pivotIndex = partition(low, high);
-        
+        quickSort(low, pivotIndex - 1);
+        quickSort(pivotIndex + 1, high);
     }
 }
 
