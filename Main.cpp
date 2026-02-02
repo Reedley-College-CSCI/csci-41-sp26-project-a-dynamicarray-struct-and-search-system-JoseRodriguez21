@@ -132,6 +132,12 @@ int Inventory::partition(int low, int high) {
             product[j] = temp;
         }
     } 
+
+    Products temp = product[i + 1];
+    product[i + 1] = product[high];
+    product[high] = temp;
+
+    return i + 1;
 }
 
 void Inventory::quickSort(int low, int high) {
@@ -141,5 +147,3 @@ void Inventory::quickSort(int low, int high) {
         quickSort(pivotIndex + 1, high);
     }
 }
-
-
