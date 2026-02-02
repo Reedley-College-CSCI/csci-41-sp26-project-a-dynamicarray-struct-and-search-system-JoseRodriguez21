@@ -97,6 +97,12 @@ void Inventory::loadData(const string& filename) {
     cout << "Loaded " << count << " products." << endl;
 }
 
-bool Inventory::compareCase(const string& product1, const string& b) const {
-    
+bool Inventory::compareCase(const string& product1, const string& product2) const {
+    int n;
+    if (product1.length() < product2.length()) {
+        n = product1.length();
+    }
+    else {
+        n = product2.length();
+    }
 }
