@@ -123,6 +123,15 @@ void Inventory::sortByName() {
 int Inventory::partition(int low, int high) {
     Products pivot = product[high];
     int i = low - 1;
+    
+    for (int j = low; j < high; j++) {
+        if (compareCase(product[j].productName, pivot.productName)) {
+            i++;
+            Products temp = product[i];
+            product[i] = product[j];
+            product[j] = temp;
+        }
+    } 
 }
 
 void Inventory::quickSort(int low, int high) {
