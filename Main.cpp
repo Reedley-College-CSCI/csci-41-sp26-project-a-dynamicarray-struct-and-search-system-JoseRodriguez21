@@ -120,6 +120,11 @@ void Inventory::sortByName() {
     quickSort(0, count - 1);
 }
 
+int Inventory::partition(int low, int high) {
+    Products pivot = product[high];
+    int i = low - 1;
+}
+
 void Inventory::quickSort(int low, int high) {
     if (low < high) {
         int pivotIndex = partition(low, high);
