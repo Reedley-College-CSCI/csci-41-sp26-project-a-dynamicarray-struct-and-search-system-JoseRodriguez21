@@ -23,6 +23,7 @@ class Inventory {
         Products product[30];
         int count;
 
+        int partition(int low, int high);
         void quickSort(int low, int high);
         bool compareCase(const string& product1, const string& product2) const;
 
@@ -98,10 +99,6 @@ void Inventory::loadData(const string& filename) {
     cout << "Loaded " << count << " products." << endl;
 }
 
-void Inventory::sortByName() {
-    quickSort(0, count - 1);
-}
-
 bool Inventory::compareCase(const string& product1, const string& product2) const {
     int n;
     if (product1.length() < product2.length()) {
@@ -118,3 +115,16 @@ bool Inventory::compareCase(const string& product1, const string& product2) cons
     }
     return product1.length() < product2.length();
 }
+
+void Inventory::sortByName() {
+    quickSort(0, count - 1);
+}
+
+void Inventory::quickSort(int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(low, high);
+        
+    }
+}
+
+
