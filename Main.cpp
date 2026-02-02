@@ -105,4 +105,11 @@ bool Inventory::compareCase(const string& product1, const string& product2) cons
     else {
         n = product2.length();
     }
+    for (int i = 0; i < n; i++) {
+        char char1 = tolower(product1[i]);
+        char char2 = tolower(product2[i]);
+        if (char1 < char2) return true;
+        if (char1 > char2) return false;
+    }
+    return product1.length() < product2.length();
 }
