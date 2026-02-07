@@ -36,6 +36,7 @@ class Inventory {
     void sortByName();
     void printProducts() const;
     void selectOption();
+    void addProduct();
 };
 
 int main() {
@@ -157,6 +158,38 @@ void Inventory::displayMenu() {
     cout << "Enter a choice: " << endl;
 
 }
+void Inventory::addProduct() {
+    if (count == 30) {
+        cout << "\n Storage has reach it's max capacity." << endl;
+        return;
+    }
+
+   
+    cout << "Enter product name: ";
+    cin.ignore();
+    getline(cin, product[count].productName);
+
+    cout << "Enter stock quantity: ";
+    while(!(cin >> product[count].itemStock)) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter an integer: ";
+    }
+
+    cout << "Enter price: ";
+    while (!(cin >> product[count].price)) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Invalid input. Enter a numer: ";
+    }
+
+    cout << "Enter a category: ";
+    cin.ignore();
+    getline(cin, product[count].category);
+
+    count++;
+    cout << "\nProduct added succesfully.";
+}
 
 void Inventory::selectOption() {
     int userChoice;
@@ -175,8 +208,8 @@ void Inventory::selectOption() {
             break;
         }
         switch (userChoice) {
-            case 1: printProducts();
-            break;
+            case 1: addProduct(); break;
+            case 2: printProducts(); break;
             default: cout << "\n Invalid option." << endl; break;
         }
     }
