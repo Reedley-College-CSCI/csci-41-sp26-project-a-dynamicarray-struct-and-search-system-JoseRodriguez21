@@ -25,6 +25,8 @@ class Inventory {
         int count;
         bool compareCase(const string& product1, const string& product2) const;
         void bubbleSort();
+        void displayMenu();
+        
     public:
     Inventory() {
         count = 0;
@@ -33,14 +35,14 @@ class Inventory {
     void loadData(const string& filename);
     void sortByName();
     void printProducts() const;
-
-    
+    void selectOption();
 };
 
 int main() {
     string userName;
     int productCount = 0;
     Inventory store;
+    
 
     store.loadData("Storage.txt");
     store.sortByName();
@@ -49,7 +51,8 @@ int main() {
     getline(cin, userName);
 
     cout << "Welcome " << userName << " to your storage system." << endl;
-    store.printProducts();
+    store.selectOption();
+
 
 }
 
@@ -138,6 +141,40 @@ void Inventory::bubbleSort() {
                 product[j] = product[j + 1];
                 product[j + 1] = temp;
             }
+        }
+    }
+}
+
+void Inventory::displayMenu() {
+    cout << "         Storage         " << endl;
+    cout << "-------------------------" << endl;
+    cout << "1 - Add Product          " << endl;
+    cout << "2 - Delete Product       " << endl;
+    cout << "3 - Display all Products " << endl;
+    cout << "4 - Search for a Product " << endl;
+    cout << "-99 - Exit the program   " << endl;
+    cout << "-------------------------" << endl;
+    cout << "Enter a choice: " << endl;
+
+}
+
+void Inventory::selectOption() {
+    int userChoice;
+
+    while(true) {
+        displayMenu();
+        while (!(cin >> userChoice)) {
+            cin.clear();
+            cin.ignore(999, 0);
+        }
+        cin.ignore();
+
+        if (userChoice == -99) {
+            break;
+        }
+        switch (userChoice) {
+            case 1: printProducts();
+            default: cout << "\n Invalid option." << endl; break;
         }
     }
 }
