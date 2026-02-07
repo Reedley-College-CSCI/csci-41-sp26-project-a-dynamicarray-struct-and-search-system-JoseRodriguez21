@@ -165,7 +165,9 @@ void Inventory::selectOption() {
         displayMenu();
         while (!(cin >> userChoice)) {
             cin.clear();
-            cin.ignore(999, 0);
+            cin.ignore(999, '\n');
+            cout << "Invalid input. Enter a number from the menu:" << endl;
+            continue;
         }
         cin.ignore();
 
@@ -174,6 +176,7 @@ void Inventory::selectOption() {
         }
         switch (userChoice) {
             case 1: printProducts();
+            break;
             default: cout << "\n Invalid option." << endl; break;
         }
     }
