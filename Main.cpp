@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <cctype>
 using namespace std;
 
 struct Products {
@@ -22,11 +23,8 @@ class Inventory {
     private:
         Products product[30];
         int count;
-
-        int partition(int low, int high);
-        void quickSort(int low, int high);
         bool compareCase(const string& product1, const string& product2) const;
-
+        void bubbleSort();
     public:
     Inventory() {
         count = 0;
@@ -34,6 +32,7 @@ class Inventory {
 
     void loadData(const string& filename);
     void sortByName();
+    void printProducts() const;
 
     
 };
@@ -50,6 +49,7 @@ int main() {
     getline(cin, userName);
 
     cout << "Welcome " << userName << " to your storage system." << endl;
+    store.printProducts();
 
 }
 
@@ -99,6 +99,16 @@ void Inventory::loadData(const string& filename) {
     cout << "Loaded " << count << " products." << endl;
 }
 
+void Inventory::printProducts() const {
+    cout << "PRODUCT LIST:\n";
+    for (int i = 0; i < count; i++) {
+        cout << product[i].productName << " | "
+             << product[i].itemStock << " | "
+             << product[i].price << " | "
+             << product[i].category << endl;
+    }
+}
+
 bool Inventory::compareCase(const string& product1, const string& product2) const {
     int n;
     if (product1.length() < product2.length()) {
@@ -117,33 +127,17 @@ bool Inventory::compareCase(const string& product1, const string& product2) cons
 }
 
 void Inventory::sortByName() {
-    quickSort(0, count - 1);
+    bubbleSort();
 }
 
-int Inventory::partition(int low, int high) {
-    Products pivot = product[high];
-    int i = low - 1;
-    
-    for (int j = low; j < high; j++) {
-        if (compareCase(product[j].productName, pivot.productName)) {
-            i++;
-            Products temp = product[i];
-            product[i] = product[j];
-            product[j] = temp;
+void Inventory::bubbleSort() {
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - i - 1; j++) {
+            if (!compareCase(product[j].productName, product[j + 1].productName)) {
+                Products temp = product[j];
+                product[j] = product[j + 1];
+                product[j + 1] = temp;
+            }
         }
-    } 
-
-    Products temp = product[i + 1];
-    product[i + 1] = product[high];
-    product[high] = temp;
-
-    return i + 1;
-}
-
-void Inventory::quickSort(int low, int high) {
-    if (low < high) {
-        int pivotIndex = partition(low, high);
-        quickSort(low, pivotIndex - 1);
-        quickSort(pivotIndex + 1, high);
     }
 }
