@@ -168,26 +168,25 @@ void Inventory::addProduct() {
         return;
     }
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Enter product name: ";
     getline(cin, product[count].productName);
 
     cout << "Enter stock quantity: ";
     while(!(cin >> product[count].itemStock)) {
         cin.clear();
-        cin.ignore(1000, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input. Enter an integer: ";
     }
 
     cout << "Enter price: ";
     while (!(cin >> product[count].price)) {
         cin.clear();
-        cin.ignore(1000, '\n');
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << "Invalid input. Enter a number: ";
     }
-
+    
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Enter a category: ";
-    cin.ignore();
     getline(cin, product[count].category);
 
     count++;
