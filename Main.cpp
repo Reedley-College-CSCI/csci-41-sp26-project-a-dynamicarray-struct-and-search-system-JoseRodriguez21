@@ -37,6 +37,7 @@ class Inventory {
     void printProducts() const;
     void selectOption();
     void addProduct();
+    int searchProduct(const string& targetProduct);
 };
 
 int main() {
@@ -158,6 +159,7 @@ void Inventory::displayMenu() {
     cout << "Enter a choice: " << endl;
 
 }
+
 void Inventory::addProduct() {
     if (count == 30) {
         cout << "\n Storage has reach it's max capacity." << endl;
@@ -180,7 +182,7 @@ void Inventory::addProduct() {
     while (!(cin >> product[count].price)) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cout << "Invalid input. Enter a numer: ";
+        cout << "Invalid input. Enter a number: ";
     }
 
     cout << "Enter a category: ";
@@ -193,9 +195,12 @@ void Inventory::addProduct() {
     sortByName();
 }
 
+int Inventory::searchProduct(const string& targetProduct) {
+
+}
+
 void Inventory::selectOption() {
     int userChoice;
-
     while(true) {
         displayMenu();
         while (!(cin >> userChoice)) {
@@ -211,7 +216,29 @@ void Inventory::selectOption() {
         }
         switch (userChoice) {
             case 1: addProduct(); break;
-            case 2: printProducts(); break;
+            case 2: break;
+            case 3: printProducts(); break;
+            case 4: {
+                    string productName;
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "Enter product name to search: ";
+                    getline(cin, productName);
+
+                    int index = searchProduct(productName);
+
+                    if (index == -1) {
+                        cout << productName << "not found." << endl;
+                    }
+                    else {
+                        cout << productName << "Found:" << endl;
+                        cout << product[index].productName << " | ";
+                        cout << product[index].itemStock << " | ";
+                        cout << product[index].price << " | ";
+                        cout << product[index].category << " | \n"; 
+                    }
+
+                    break;
+                   }
             default: cout << "\n Invalid option." << endl; break;
         }
     }
