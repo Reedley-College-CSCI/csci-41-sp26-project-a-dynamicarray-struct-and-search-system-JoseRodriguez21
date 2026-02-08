@@ -196,16 +196,18 @@ void Inventory::addProduct() {
 }
 
 int Inventory::searchProduct(const string& targetProduct) {
+    sortByName();
     int low = 0;
     int high = count - 1;
 
     while (low <= high) {
         int mid = (low + high) / 2;
 
-        if (product[mid].productName == targetProduct) {
+        if (!compareCase(product[mid].productName, targetProduct) &&
+           (!compareCase(targetProduct, product[mid].productName))) {
             return mid;
         }
-        else if (product[mid].productName < targetProduct) {
+        else if (compareCase(product[mid].productName, targetProduct)) {
             low = mid + 1;
         }
         else {
@@ -246,7 +248,7 @@ void Inventory::selectOption() {
                         cout << productName << "not found." << endl;
                     }
                     else {
-                        cout << productName << "Found:" << endl;
+                        cout << productName << "Found: " << index << endl;
                         cout << product[index].productName << " | ";
                         cout << product[index].itemStock << " | ";
                         cout << product[index].price << " | ";
