@@ -247,7 +247,7 @@ void Inventory::selectOption() {
             cout << "Invalid input. Enter a number from the menu:" << endl;
             continue;
         }
-        cin.ignore();
+        
 
         if (userChoice == -99) {
             break;
