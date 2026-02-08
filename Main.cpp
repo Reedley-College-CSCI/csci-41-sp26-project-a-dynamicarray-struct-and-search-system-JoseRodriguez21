@@ -33,6 +33,7 @@ class Inventory {
     }
 
     void loadData(const string& filename);
+    void updateData(const string& filename);
     void sortByName();
     void printProducts() const;
     void selectOption();
@@ -55,7 +56,7 @@ int main() {
 
     cout << "Welcome " << userName << " to your storage system." << endl;
     store.selectOption();
-
+    store.updateData("Storage.txt");
 
 }
 
@@ -289,4 +290,18 @@ void Inventory::selectOption() {
             default: cout << "\n Invalid option." << endl; break;
         }
     }
+}
+
+void Inventory::updateData(const string& filename) {
+    ofstream storageFile("Storage.txt");
+
+    for (int i = 0; i < count; i++) {
+        storageFile << product[i].productName << " "
+                    << product[i].itemStock << " "
+                    << product[i].price << " "
+                    << product[i].category << endl;
+    }
+
+    storageFile.close();
+    cout << "Data saved to " << filename << " successfully." << endl;
 }
