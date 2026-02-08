@@ -39,7 +39,7 @@ class Inventory {
     ~Inventory() {
         delete[] product;
     }
-    
+
     void loadData(const string& filename);
     void updateData(const string& filename);
     void sortByName();
@@ -79,7 +79,7 @@ void Inventory::loadData(const string& filename) {
     count = 0;
     string line;
 
-    while(getline(storageFile, line) && count < 30) {
+    while(getline(storageFile, line) && count < capacity) {
         stringstream ss(line);
         string words[20];
         int wordCount = 0;
@@ -171,7 +171,7 @@ void Inventory::displayMenu() {
 }
 
 void Inventory::addProduct() {
-    if (count == 30) {
+    if (count == capacity) {
         cout << "\n Storage has reach it's max capacity." << endl;
         return;
     }
