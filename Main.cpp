@@ -22,17 +22,24 @@ struct Products {
 
 class Inventory {
     private:
-        Products product[30];
+        Products* product;
         int count;
+        int capacity;
         bool compareCase(const string& product1, const string& product2) const;
         void bubbleSort();
         void displayMenu();
         
     public:
     Inventory() {
+        capacity = 30;
         count = 0;
+        product = new Products[capacity];
     }
 
+    ~Inventory() {
+        delete[] product;
+    }
+    
     void loadData(const string& filename);
     void updateData(const string& filename);
     void sortByName();
