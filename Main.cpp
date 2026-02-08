@@ -211,6 +211,7 @@ void Inventory::deleteProduct(const string& targetProduct) {
     product[count - 1] = Products();
 
     count--;
+    cout << targetProduct << " has been deleted." << endl;
 }
 
 int Inventory::searchProduct(const string& targetProduct) {
