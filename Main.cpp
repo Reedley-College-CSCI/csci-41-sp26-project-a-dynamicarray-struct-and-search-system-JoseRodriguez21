@@ -188,7 +188,9 @@ void Inventory::addProduct() {
     getline(cin, product[count].category);
 
     count++;
-    cout << "\nProduct added succesfully.";
+    
+    cout << "Product added succesfully.";
+    sortByName();
 }
 
 void Inventory::selectOption() {
