@@ -204,6 +204,13 @@ void Inventory::deleteProduct(const string& targetProduct) {
         return;
     }
 
+    for (int i = index; i < count - 1; i++) {
+        product[i] = product[i + 1];
+    }
+    
+    product[count - 1] = Products();
+
+    count--;
 }
 
 int Inventory::searchProduct(const string& targetProduct) {
