@@ -199,6 +199,11 @@ void Inventory::addProduct() {
 void Inventory::deleteProduct(const string& targetProduct) {
     int index = searchProduct(targetProduct);
 
+    if (index == -1) {
+        cout << targetProduct << " not found." << endl;
+        return;
+    }
+
 }
 
 int Inventory::searchProduct(const string& targetProduct) {
