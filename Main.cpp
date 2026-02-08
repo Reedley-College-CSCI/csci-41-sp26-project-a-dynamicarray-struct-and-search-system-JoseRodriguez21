@@ -37,6 +37,7 @@ class Inventory {
     void printProducts() const;
     void selectOption();
     void addProduct();
+    void deleteProduct(const string& targetProduct);
     int searchProduct(const string& targetProduct);
 };
 
@@ -195,6 +196,11 @@ void Inventory::addProduct() {
     sortByName();
 }
 
+void Inventory::deleteProduct(const string& targetProduct) {
+    int index = searchProduct(targetProduct);
+
+}
+
 int Inventory::searchProduct(const string& targetProduct) {
     sortByName();
     int low = 0;
@@ -234,28 +240,38 @@ void Inventory::selectOption() {
         }
         switch (userChoice) {
             case 1: addProduct(); break;
-            case 2: break;
+            case 2: {
+                      string productName;
+
+                      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                      cout << "Enter product name to delete: ";
+                      getline(cin, productName);
+
+                      deleteProduct(productName);
+                      break;
+                    } 
             case 3: printProducts(); break;
             case 4: {
-                    string productName;
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    cout << "Enter product name to search: ";
-                    getline(cin, productName);
+                      string productName;
 
-                    int index = searchProduct(productName);
+                      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                      cout << "Enter product name to search: ";
+                      getline(cin, productName);
 
-                    if (index == -1) {
-                        cout << productName << "not found." << endl;
-                    }
-                    else {
-                        cout << productName << "Found: " << index << endl;
-                        cout << product[index].productName << " | ";
-                        cout << product[index].itemStock << " | ";
-                        cout << product[index].price << " | ";
-                        cout << product[index].category << " | \n"; 
-                    }
+                      int index = searchProduct(productName);
 
-                    break;
+                      if (index == -1) {
+                          cout << productName << " not found." << endl;
+                      }
+                      else {
+                          cout << productName << "Found: " << index << endl;
+                          cout << product[index].productName << " | ";
+                          cout << product[index].itemStock << " | ";
+                          cout << product[index].price << " | ";
+                          cout << product[index].category << " | \n"; 
+                      }
+
+                      break;
                    }
             default: cout << "\n Invalid option." << endl; break;
         }
