@@ -168,9 +168,8 @@ void Inventory::addProduct() {
         return;
     }
 
-   
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Enter product name: ";
-    cin.ignore();
     getline(cin, product[count].productName);
 
     cout << "Enter stock quantity: ";
@@ -192,7 +191,6 @@ void Inventory::addProduct() {
     getline(cin, product[count].category);
 
     count++;
-    
     cout << "Product added succesfully.";
     sortByName();
 }
@@ -216,7 +214,6 @@ void Inventory::deleteProduct(const string& targetProduct) {
 }
 
 int Inventory::searchProduct(const string& targetProduct) {
-    sortByName();
     int low = 0;
     int high = count - 1;
 
@@ -248,28 +245,29 @@ void Inventory::selectOption() {
             continue;
         }
         
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         if (userChoice == -99) {
             break;
         }
         switch (userChoice) {
-            case 1: addProduct(); break;
+            case 1: addProduct(); 
+                    break;
             case 2: {
                       string productName;
 
-                      cin.ignore(numeric_limits<streamsize>::max(), '\n');
                       cout << "Enter product name to delete: ";
                       getline(cin, productName);
 
                       deleteProduct(productName);
                       break;
                     } 
-            case 3: printProducts(); break;
+            case 3: printProducts(); 
+                    break;
             case 4: {
                       string productName;
 
-                      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                      cout << "Enter product name to search: ";
+                      cout << "\nEnter product name to search: ";
                       getline(cin, productName);
 
                       int index = searchProduct(productName);
@@ -278,7 +276,7 @@ void Inventory::selectOption() {
                           cout << productName << " not found." << endl;
                       }
                       else {
-                          cout << productName << "Found: " << index << endl;
+                          cout << productName << "Found: " << endl;
                           cout << product[index].productName << " | ";
                           cout << product[index].itemStock << " | ";
                           cout << product[index].price << " | ";
@@ -293,7 +291,7 @@ void Inventory::selectOption() {
 }
 
 void Inventory::updateData(const string& filename) {
-    ofstream storageFile("Storage.txt");
+    ofstream storageFile(filename);
 
     if (!storageFile) {
         cout << "Error opening " << filename << " for uploading" << endl;
