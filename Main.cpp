@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <cctype>
+#include <chrono>
 using namespace std;
 
 struct Products {
@@ -39,7 +40,7 @@ class Inventory {
     void selectOption();
     void addProduct();
     void deleteProduct(const string& targetProduct);
-    int searchProduct(const string& targetProduct);
+    int searchProduct(const string& targetProduct, long long& opCount);
 };
 
 int main() {
@@ -195,7 +196,8 @@ void Inventory::addProduct() {
 }
 
 void Inventory::deleteProduct(const string& targetProduct) {
-    int index = searchProduct(targetProduct);
+    long long opCount;
+    int index = searchProduct(targetProduct, opCount);
 
     if (index == -1) {
         cout << targetProduct << " not found." << endl;
@@ -212,11 +214,13 @@ void Inventory::deleteProduct(const string& targetProduct) {
     cout << targetProduct << " has been deleted." << endl;
 }
 
-int Inventory::searchProduct(const string& targetProduct) {
+int Inventory::searchProduct(const string& targetProduct, long long& opCount) {
     int low = 0;
     int high = count - 1;
+    opCount = 0;
 
     while (low <= high) {
+        opCount++;
         int mid = (low + high) / 2;
 
         if (!compareCase(product[mid].productName, targetProduct) &&
@@ -268,9 +272,17 @@ void Inventory::selectOption() {
 
                       cout << "\nEnter product name to search: ";
                       getline(cin, productName);
+                      
+                      long long opCount;
 
-                      int index = searchProduct(productName);
-
+                      auto start = chrono::high_resolution_clock::now();
+                      int index = searchProduct(productName, opCount);
+                      auto end = chrono::high_resolution_clock::now();
+                      
+                      cout << "Binary Search: " << opCount << " ops, "
+                           << chrono::duration_cast<chrono::microseconds>(end - start).count()
+                           << " us" << endl;
+                        
                       if (index == -1) {
                           cout << productName << " not found." << endl;
                       }
