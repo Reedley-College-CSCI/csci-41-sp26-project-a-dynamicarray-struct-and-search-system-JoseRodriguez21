@@ -295,6 +295,11 @@ void Inventory::selectOption() {
 void Inventory::updateData(const string& filename) {
     ofstream storageFile("Storage.txt");
 
+    if (!storageFile) {
+        cout << "Error opening " << filename << " for uploading" << endl;
+        return;
+    }
+    
     for (int i = 0; i < count; i++) {
         storageFile << product[i].productName << " "
                     << product[i].itemStock << " "
