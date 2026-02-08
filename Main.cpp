@@ -51,10 +51,10 @@ int main() {
     store.loadData("Storage.txt");
     store.sortByName();
 
-    cout << "Enter your name: " << endl;
+    cout << "Enter your name: ";
     getline(cin, userName);
 
-    cout << "Welcome " << userName << " to your storage system." << endl;
+    cout << "\nWelcome " << userName << " to your storage system." << endl;
     store.selectOption();
     store.updateData("Storage.txt");
 
@@ -107,7 +107,7 @@ void Inventory::loadData(const string& filename) {
 }
 
 void Inventory::printProducts() const {
-    cout << "PRODUCT LIST:\n";
+    cout << "\nPRODUCT LIST:\n";
     for (int i = 0; i < count; i++) {
         cout << product[i].productName << " | "
              << product[i].itemStock << " | "
@@ -150,7 +150,7 @@ void Inventory::bubbleSort() {
 }
 
 void Inventory::displayMenu() {
-    cout << "         Storage         " << endl;
+    cout << "\n         Storage         " << endl;
     cout << "-------------------------" << endl;
     cout << "1 - Add Product          " << endl;
     cout << "2 - Delete Product       " << endl;
@@ -158,7 +158,7 @@ void Inventory::displayMenu() {
     cout << "4 - Search for a Product " << endl;
     cout << "-99 - Exit the program   " << endl;
     cout << "-------------------------" << endl;
-    cout << "Enter a choice: " << endl;
+    cout << "Enter a choice: ";
 
 }
 
@@ -299,7 +299,7 @@ void Inventory::updateData(const string& filename) {
         cout << "Error opening " << filename << " for uploading" << endl;
         return;
     }
-    
+
     for (int i = 0; i < count; i++) {
         storageFile << product[i].productName << " "
                     << product[i].itemStock << " "
