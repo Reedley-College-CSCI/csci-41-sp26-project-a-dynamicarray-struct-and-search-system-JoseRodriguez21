@@ -82,7 +82,10 @@ void Inventory::loadData(const string& filename) {
     count = 0;
     string line;
 
-    while(getline(storageFile, line) && count < capacity) {
+    while(getline(storageFile, line)) {
+        if (count == capacity) {
+            resize();
+        }
         stringstream ss(line);
         string words[20];
         int wordCount = 0;
@@ -195,8 +198,7 @@ void Inventory::displayMenu() {
 
 void Inventory::addProduct() {
     if (count == capacity) {
-        cout << "\n Storage has reach it's max capacity." << endl;
-        return;
+        resize();
     }
 
     cout << "Enter product name: ";
