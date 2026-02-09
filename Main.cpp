@@ -4,6 +4,8 @@
 #include <sstream>
 #include <cctype>
 #include <chrono>
+#include <limits>
+
 using namespace std;
 
 struct Products {
@@ -28,6 +30,7 @@ class Inventory {
         bool compareCase(const string& product1, const string& product2) const;
         void bubbleSort();
         void displayMenu();
+        void resize();
         
     public:
     Inventory() {
@@ -122,6 +125,11 @@ void Inventory::printProducts() const {
              << product[i].price << " | "
              << product[i].category << endl;
     }
+}
+
+void Inventory::resize() {
+    
+    int newCapacity = capacity + capacity / 2;
 }
 
 bool Inventory::compareCase(const string& product1, const string& product2) const {
