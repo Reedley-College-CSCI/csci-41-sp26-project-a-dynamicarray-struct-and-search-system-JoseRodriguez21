@@ -225,6 +225,7 @@ void Inventory::addProduct() {
     count++;
     cout << "Product added succesfully.";
     sortByName();
+    updateData("Storage.txt");
 }
 
 void Inventory::deleteProduct(const string& targetProduct) {
@@ -244,6 +245,7 @@ void Inventory::deleteProduct(const string& targetProduct) {
 
     count--;
     cout << targetProduct << " has been deleted." << endl;
+    updateData("Storage.txt");
 }
 
 int Inventory::searchProduct(const string& targetProduct, long long& opCount) {
@@ -319,7 +321,7 @@ void Inventory::selectOption() {
                           cout << productName << " not found." << endl;
                       }
                       else {
-                          cout << productName << "Found: " << endl;
+                          cout << productName << " Found: " << endl;
                           cout << product[index].productName << " | ";
                           cout << product[index].itemStock << " | ";
                           cout << product[index].price << " | ";
