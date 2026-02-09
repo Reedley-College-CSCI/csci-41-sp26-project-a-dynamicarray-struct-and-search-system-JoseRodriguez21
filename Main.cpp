@@ -136,6 +136,15 @@ void Inventory::resize() {
     }
 
     Products* newArray = new Products[newCapacity];
+
+    for (int i = 0; i < count; i++) {
+        newArray[i] = product[i];
+    }
+
+    delete[] product;
+
+    product = newArray;
+    capacity = newCapacity;
 }
 
 bool Inventory::compareCase(const string& product1, const string& product2) const {
