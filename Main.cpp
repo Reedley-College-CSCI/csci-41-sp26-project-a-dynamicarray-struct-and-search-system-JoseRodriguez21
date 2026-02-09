@@ -130,6 +130,12 @@ void Inventory::printProducts() const {
 void Inventory::resize() {
     
     int newCapacity = capacity + capacity / 2;
+
+    if (newCapacity <= capacity) {
+        newCapacity = capacity + 1;
+    }
+
+    Products* newArray = new Products[newCapacity];
 }
 
 bool Inventory::compareCase(const string& product1, const string& product2) const {
