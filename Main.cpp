@@ -223,7 +223,7 @@ void Inventory::addProduct() {
     getline(cin, product[count].category);
 
     count++;
-    cout << "Product added succesfully.";
+    cout << "Product added succesfully." << endl;
     sortByName();
     updateData("Storage.txt");
 }
